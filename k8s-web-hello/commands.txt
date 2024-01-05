@@ -1,0 +1,20 @@
+INITIALIZE PROJECT:
+npm init -y
+npm install express
+
+BUILD IMAGE:
+docker build . -t devopst/k8s-web-hello
+
+UPLOAD TO DOCKERHUB:
+docker login
+docker push devopst/k8s-web-hello
+
+CREATE DEPLOYMENT & SVC IN K8S:
+kubectl create deployment --replicas=4 k8s-web-hello --image=devopst/k8s-web-hello
+NodePort svc:
+kubectl expose deployment k8s-web-hello --type=NodePort --port=3000
+LoadBalancer svc:
+kubectl expose deployment k8s-web-hello --type=LoadBalancer --port=3000
+
+CONNECT:
+minikube service k8s-web-hello
