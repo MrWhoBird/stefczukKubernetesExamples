@@ -1,0 +1,6 @@
+docker build . -t devopst/k8s-web-to-nginx
+
+kubectl apply -f k8s-web-to-nginx.yaml -f nginx.yaml
+minikube service k8s-web-to-nginx
+
+#kubectl delete -f k8s-web-to-nginx.yaml -f nginx.yaml

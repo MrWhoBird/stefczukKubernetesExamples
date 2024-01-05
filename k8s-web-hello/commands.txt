@@ -1,7 +1,3 @@
-INITIALIZE PROJECT:
-npm init -y
-npm install express
-
 BUILD IMAGE:
 docker build . -t devopst/k8s-web-hello
 
@@ -18,3 +14,11 @@ kubectl expose deployment k8s-web-hello --type=LoadBalancer --port=3000
 
 CONNECT:
 minikube service k8s-web-hello
+
+#ROLLING UPDATE:
+#change the file
+#build new image + new tag
+#k set image deployment k8s-web-hello k8s-web-hello=dockerhub address
+
+#CLEAR:
+#kubectl delete all --all
